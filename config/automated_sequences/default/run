@@ -1,1 +1,5 @@
 ~win r
+~sleep~ 100  # for RUN window to open
+~arg~
+~enter
+~sleep~ 1000 # for program to open
