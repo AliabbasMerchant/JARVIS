@@ -11,4 +11,4 @@ A virtual voice and text based assistant for Windows.
 [Yash Jain](https://github.com/yash0530)    
 
 #### Environment
-Windows
+Windows 10
