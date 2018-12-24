@@ -13,7 +13,7 @@ def gen_sequence(seq_name: str):
     print('Available key names:', pyautogui.KEY_NAMES)
     print('For normal text, type "<text to be typed><enter>"')
     print('For simultaneous key press(es), type "~<space separated key name(s)><enter>"')
-    print('To reuse an existing automation sequence, type "~~<existing sequence name>"')
+    print('To reuse an existing automation sequence, type "~~<existing sequence name><enter>"')
     print('To complete sequence generation, type "~exit<enter>"')
     sequence = []
     while True:

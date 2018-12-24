@@ -15,7 +15,7 @@ def automate(sequence: str):
                 if line.startswith("~~"):
                     seq = line[2:].strip()
                     automate(seq)
-                if line.startswith("~"):
+                elif line.startswith("~"):
                     keys = line[1:].split()
                     for k in keys:
                         if k not in pyautogui.KEY_NAMES:
