@@ -1,4 +1,5 @@
 .idea
-config/automated_sequences/**
+*.pyc
+**/__pycache__/
+config/automated_sequences/*
 !config/automated_sequences/default
-**/__pycache__

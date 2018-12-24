@@ -12,4 +12,4 @@ def do(command: str):
     elif command.split()[0].lower() in commands["Generate Automate Sequence"]:
         gen_sequence(command_args)
     else:
-        raise AttributeError("No such command exists")
+        raise AttributeError("No such command exists:", command)

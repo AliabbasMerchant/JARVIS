@@ -6,8 +6,8 @@ def gen_sequence(seq_name: str):
     if seq_name.strip() == "":
         raise Exception("Sequence name cannot be a whitespace")
     seq_dir = str(__file__)[:str(__file__).index("source")] + "config" + os.sep + "automated_sequences"
-    if seq_name in os.listdir(seq_dir):
-        raise Exception("Sequence", seq_name, "already exists")
+    if os.path.exists(seq_dir + os.sep + seq_name):
+        raise Exception("Sequence " + seq_name + " already exists")
     print('Generating Sequence', seq_name)
     print('Instructions(Currently does not support mouse functions):')
     print('Available key names:', pyautogui.KEY_NAMES)
@@ -23,7 +23,7 @@ def gen_sequence(seq_name: str):
                 break
             elif i.startswith("~~"):
                 seq = i.lstrip()[2:].strip()
-                if seq in os.listdir(seq_dir):
+                if os.path.exists(seq_dir + os.sep + seq):
                     sequence.append("~~"+seq)
                 else:
                     raise Exception("No such sequence found:", seq)
