@@ -10,9 +10,13 @@ def automate(sequence: str):
         with open(seq_dir + os.sep + sequence, 'r') as f:
             lines = f.readlines()
         for line in lines:
-            if line.strip() != "":
-                if line.strip().startswith("~"):
-                    keys = line.strip()[1:].split()
+            line = line.strip()
+            if line != "":
+                if line.startswith("~~"):
+                    seq = line[2:].strip()
+                    automate(seq)
+                if line.startswith("~"):
+                    keys = line[1:].split()
                     pyautogui.hotkey(*keys)
                 else:
                     pyautogui.typewrite(line)

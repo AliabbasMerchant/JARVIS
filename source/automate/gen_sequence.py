@@ -13,22 +13,29 @@ def gen_sequence(seq_name: str):
     print('Available key names:', pyautogui.KEY_NAMES)
     print('For normal text, type "<text to be typed><enter>"')
     print('For simultaneous key press(es), type "~<space separated key name(s)><enter>"')
-    print('To complete sequence generation, type "~~<enter>"')
+    print('To reuse an existing automation sequence, type "~~<existing sequence name>"')
+    print('To complete sequence generation, type "~exit<enter>"')
     sequence = []
     while True:
-        i = input()
+        i = input().strip()
         if i != "":
-            if i == "~~":
+            if i == "~exit":
                 break
-            elif i.strip().startswith("~"):
+            elif i.startswith("~~"):
+                seq = i.lstrip()[2:].strip()
+                if seq in os.listdir(seq_dir):
+                    sequence.append("~~"+seq)
+                else:
+                    raise Exception("No such sequence found:", seq)
+            elif i.startswith("~"):
                 t = i.strip()[1:].split()
-                print(t)
                 for s in t:
                     if s not in pyautogui.KEY_NAMES:
                         raise Exception("No such key found:", s)
-                sequence.append('~'+" ".join(t))
+                sequence.append('~' + " ".join(t))
             else:
                 sequence.append(i)
-    with open(seq_dir + os.sep + seq_name, "w+") as f:
-        for s in sequence:
-            f.write(s+"\n")
+    if len(sequence) > 0:
+        with open(seq_dir + os.sep + seq_name, "w+") as f:
+            for s in sequence:
+                f.write(s.strip() + "\n")
