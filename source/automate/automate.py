@@ -1,7 +1,9 @@
 import pyautogui
 import os
 import time
-# pyautogui.PAUSE = 0.3
+
+
+# pyautogui.PAUSE = 0
 
 
 def automate(sequence: str, *args):

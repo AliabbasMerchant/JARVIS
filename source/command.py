@@ -1,5 +1,6 @@
 from .automate.automate import automate
 from .automate.gen_sequence import gen_sequence
+from .text_to_speech import text_to_speech
 import os
 import json
 
@@ -13,4 +14,5 @@ def do(command: str):
         gen_sequence(command_args)
     else:
         raise AttributeError("No such command exists:", command)
-    print("Done, Sir!")
+    print("Command Successfully Executed!")
+    text_to_speech("Command Successfully Executed!")
