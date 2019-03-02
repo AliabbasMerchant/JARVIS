@@ -4,5 +4,5 @@
 
 A virtual voice and text based assistant for Ubuntu.
 
-#### Environment
+### Environment
 Linux (Ubuntu)
